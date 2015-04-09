@@ -1,6 +1,6 @@
 # Serilog.Sinks.Datadog
 
-[![Build status](https://ci.appveyor.com/api/projects/status/sfvp7dw8u6aiodj1/branch/master?svg=true)](https://ci.appveyor.com/project/serilog/serilog-sinks-datadog/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/btet68pac930p6p6/branch/master?svg=true)](https://ci.appveyor.com/project/serilog/serilog-sinks-datadog/branch/master)
 
 Sends log events using Datadog.
 
