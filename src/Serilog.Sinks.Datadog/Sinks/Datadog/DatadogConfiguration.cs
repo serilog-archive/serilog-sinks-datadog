@@ -43,6 +43,11 @@ namespace Serilog.Sinks.Datadog
         public string[] Tags { get; private set; }
 
         /// <summary>
+        /// Prepended prefix written to events.
+        /// </summary>
+        public string Prefix { get; set; }
+
+        /// <summary>
         /// Constructs the <see cref="DatadogConfiguration"/> with the default configuration.
         /// </summary>
         public DatadogConfiguration()

@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Sinks.PeriodicBatching;
@@ -90,9 +91,11 @@ namespace Serilog.Sinks.Datadog
                 var payload = new StringWriter();
                 var title = "Log Event - " + logEvent.Level;
                 var alertType = GetAlertTypeFromEvent(logEvent);
+                var tags = GetTagsFromEvent(logEvent,_datadogConfiguration.Tags);
 
                 _textFormatter.Format(logEvent, payload);
-                _statsd.Add(title, payload.ToString(), alertType, hostname: _datadogConfiguration.Hostname, tags: _datadogConfiguration.Tags);
+                
+                _statsd.Add(title, payload.ToString(), alertType, hostname: _datadogConfiguration.Hostname, tags: tags);
             }
 
             _statsd.Send();
@@ -110,6 +113,27 @@ namespace Serilog.Sinks.Datadog
                 default:
                     return "info";
             }
+        }
+
+        private static string[] GetTagsFromEvent(LogEvent logEvent, string[] tags)
+        {
+            // For each Property Value Add a Tag
+
+            var tagList = tags.ToList();
+
+            tagList.Add($"LogLevel:{logEvent.Level}");
+            tagList.Add($"LogMessageTemplate:{logEvent.MessageTemplate}");
+            tagList.Add($"LogTimeStamp:{logEvent.Timestamp}");
+
+            if (logEvent.Exception != null)
+            {
+                tagList.Add($"Exception:{logEvent.Exception}");
+            }
+         
+            tagList.AddRange(logEvent.Properties.Where(property => property.Value != null).Select(property => $"{property.Key}:{property.Value.ToString()}"));
+
+            return tagList.ToArray();
+
         }
     }
 }
