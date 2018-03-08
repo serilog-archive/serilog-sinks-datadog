@@ -5,7 +5,7 @@
 Sends log events using Datadog.
 
 **Package** - [Serilog.Sinks.Datadog](http://nuget.org/packages/serilog.sinks.datadog)
-| **Platforms** - .NET 4.5
+| **Platforms** - .NET 4.5.1, netstandard1.3, netstandard2.0
 
 ```csharp
 var config = new DatadogConfiguration()
