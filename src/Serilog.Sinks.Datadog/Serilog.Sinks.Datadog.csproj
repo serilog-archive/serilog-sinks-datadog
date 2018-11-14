@@ -5,6 +5,8 @@
     <AssemblyName>Serilog.Sinks.Datadog</AssemblyName>
     <PackageId>Serilog.Sinks.Datadog</PackageId>
     <VersionPrefix>3.0.0</VersionPrefix>
+    <RepositoryUrl>https://github.com/serilog/serilog-sinks-datadog</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
