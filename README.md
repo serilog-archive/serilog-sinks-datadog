@@ -9,7 +9,7 @@ Sends log events using Datadog.
 
 ```csharp
 var config = new DatadogConfiguration()
-    .WithWithStatsdServer("127.0.0.1", 8125)
+    .WithStatsdServer("127.0.0.1", 8125)
     .WithHostname("my-server")
     .WithTags("tag1", "tag2");
 
