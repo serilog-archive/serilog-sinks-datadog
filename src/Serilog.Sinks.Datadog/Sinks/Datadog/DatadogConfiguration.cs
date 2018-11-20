@@ -25,22 +25,22 @@ namespace Serilog.Sinks.Datadog
         /// <summary>
         /// The Statsd server to use, if not provided the default is 127.0.0.1.
         /// </summary>
-        public string StatsdServer { get; private set; }
+        public string StatsdServer { get; set; }
 
         /// <summary>
         /// The Statsd port to use, if not provided the default is 8125.
         /// </summary>
-        public int StatsdPort { get; private set; }
+        public int StatsdPort { get; set; }
 
         /// <summary>
         /// The hostname to assign to written events.
         /// </summary>
-        public string Hostname { get; private set; }
+        public string Hostname { get; set; }
 
         /// <summary>
         /// The tags to assign to written events.
         /// </summary>
-        public string[] Tags { get; private set; }
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Constructs the <see cref="DatadogConfiguration"/> with the default configuration.
